@@ -1,5 +1,6 @@
 package ar.com.ada.api.questionados.entities;
 
+
 public class Respuesta {
 
     private Integer respuestaId;
@@ -8,8 +9,10 @@ public class Respuesta {
 
     private boolean esCorrecta;
 
-    
+    private Pregunta pregunta;
 
+
+   
     public Integer getRespuestaId() {
         return respuestaId;
     }
@@ -32,6 +35,14 @@ public class Respuesta {
 
     public void setEsCorrecta(boolean esCorrecta) {
         this.esCorrecta = esCorrecta;
+    }
+
+    public Pregunta getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(Pregunta pregunta) {
+        this.pregunta = pregunta;
     }
 
     

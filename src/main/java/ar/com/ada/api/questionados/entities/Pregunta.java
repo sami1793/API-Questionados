@@ -1,18 +1,28 @@
 package ar.com.ada.api.questionados.entities;
 
-import java.util.List;
+import java.util.*;
 
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="pregunta")
 public class Pregunta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="pregunta_Id")
     private Integer preguntaId;
 
     private Categoria categoria;
 
     private String enunciado;
 
-    private List<Respuesta> opciones;
+    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)//Pregunta pregunta en clase Respuesta
+    //@JsonIgnore//ver si usarlo para no anidar todo
+    private List<Respuesta> opciones = new ArrayList<>();
 
-    
+
 
     public Integer getPreguntaId() {
         return preguntaId;
