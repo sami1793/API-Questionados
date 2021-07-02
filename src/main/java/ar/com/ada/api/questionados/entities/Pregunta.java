@@ -11,9 +11,12 @@ public class Pregunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="pregunta_Id")
+    @Column(name="pregunta_id")
     private Integer preguntaId;
 
+    @ManyToOne
+    //preguntar al profe si se debe agregar @Column "categoria_id"
+    @JoinColumn(name="categoria_id", referencedColumnName = "categoria_id")
     private Categoria categoria;
 
     private String enunciado;
@@ -38,6 +41,7 @@ public class Pregunta {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+        this.categoria.agregarPregunta(this);//relacion bidireccional
     }
 
     public String getEnunciado() {
@@ -54,6 +58,11 @@ public class Pregunta {
 
     public void setOpciones(List<Respuesta> opciones) {
         this.opciones = opciones;
+    }
+
+    //para relacion bidireccional
+    public void agregarRespuesta(Respuesta respuesta){
+        this.opciones.add(respuesta);
     }
 
 

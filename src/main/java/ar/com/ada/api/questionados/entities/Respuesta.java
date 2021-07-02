@@ -1,14 +1,22 @@
 package ar.com.ada.api.questionados.entities;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name="respuesta")
 public class Respuesta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="respuesta_id")
     private Integer respuestaId;
 
     private String texto;
 
     private boolean esCorrecta;
 
+    @ManyToOne
+    @JoinColumn(name="pregunta_id",referencedColumnName = "pregunta_id")
     private Pregunta pregunta;
 
 
@@ -43,6 +51,7 @@ public class Respuesta {
 
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
+        this.pregunta.agregarRespuesta(this);//relacion bidireccional
     }
 
     
