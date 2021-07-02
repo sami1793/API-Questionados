@@ -1,5 +1,7 @@
 package ar.com.ada.api.questionados.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -7,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import ar.com.ada.api.questionados.entities.Categoria;
 import ar.com.ada.api.questionados.models.response.GenericResponse;
 import ar.com.ada.api.questionados.services.CategoriaService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class CategoriaController {
@@ -26,4 +31,11 @@ public class CategoriaController {
         return ResponseEntity.ok(respuesta);
 
     } 
+
+    @GetMapping("/categorias")
+    public ResponseEntity<List<Categoria>> traerCategorias() {
+
+        return ResponseEntity.ok(service.traerCategorias());
+    }
+    
 }
