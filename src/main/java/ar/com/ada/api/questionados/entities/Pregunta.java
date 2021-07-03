@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="pregunta")
@@ -22,7 +24,7 @@ public class Pregunta {
     private String enunciado;
 
     @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)//Pregunta pregunta en clase Respuesta
-    //@JsonIgnore//ver si usarlo para no anidar todo
+    @JsonIgnore//ver si usarlo para no anidar todo
     private List<Respuesta> opciones = new ArrayList<>();
 
 

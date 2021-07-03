@@ -13,6 +13,7 @@ public class Respuesta {
 
     private String texto;
 
+    @Column(name="es_correcta")
     private boolean esCorrecta;
 
     @ManyToOne

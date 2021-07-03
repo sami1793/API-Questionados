@@ -1,6 +1,6 @@
 package ar.com.ada.api.questionados.entities;
 
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -21,7 +21,7 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
-    private List<Pregunta> preguntas;
+    private List<Pregunta> preguntas= new ArrayList<>();
     
 
     public Integer getCategoriaId() {
