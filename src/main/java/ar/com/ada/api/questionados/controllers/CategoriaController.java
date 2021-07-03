@@ -19,19 +19,7 @@ public class CategoriaController {
     @Autowired
     private CategoriaService service;
 
-    @PostMapping("/categorias")//crea una categoria
-    public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria){
-
-        GenericResponse respuesta = new GenericResponse();
-        service.crearCategoria(categoria);
-
-        respuesta.isOk=true;
-        respuesta.message="Categoria creada con éxito";
-
-        return ResponseEntity.ok(respuesta);
-
-    } 
-
+    
     // GET Categorias
     @GetMapping("/categorias")
     public ResponseEntity<List<Categoria>> traerCategorias() {
@@ -45,5 +33,27 @@ public class CategoriaController {
 
         return ResponseEntity.ok(service.buscarCategoria(id));
     }
+
+    @PostMapping("/categorias")//crea una categoria
+    public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria){
+
+        GenericResponse respuesta = new GenericResponse();
+
+        if (!(service.existeCategoriaId(categoria.getCategoriaId()))){
+            service.crearCategoria(categoria);
+
+            respuesta.isOk=true;
+            respuesta.message="Categoria creada con éxito";
+
+            return ResponseEntity.ok(respuesta);
+
+        }
+        else {
+            respuesta.isOk=false;
+            respuesta.message="Ya existe una categoria con este Id";
+            return ResponseEntity.badRequest().body(respuesta);
+        }
+        
+    } 
     
 }

@@ -15,6 +15,13 @@ public class CategoriaService {
     @Autowired
     CategoriaRepository repo;
 
+    public boolean existeCategoriaId(Integer categoriaId){
+        if ((buscarCategoria(categoriaId)!=null)){
+            return true;
+        }
+        else return false;
+    }
+
     public void crearCategoria(Categoria categoria) {
         repo.save(categoria);
 
