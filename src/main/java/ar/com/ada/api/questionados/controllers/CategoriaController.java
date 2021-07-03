@@ -10,7 +10,7 @@ import ar.com.ada.api.questionados.entities.Categoria;
 import ar.com.ada.api.questionados.models.response.GenericResponse;
 import ar.com.ada.api.questionados.services.CategoriaService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -32,10 +32,18 @@ public class CategoriaController {
 
     } 
 
+    // GET Categorias
     @GetMapping("/categorias")
     public ResponseEntity<List<Categoria>> traerCategorias() {
 
         return ResponseEntity.ok(service.traerCategorias());
+    }
+
+    // GET Categoria por id
+    @GetMapping("/categorias/{id}")
+    public ResponseEntity<Categoria> traerCategoriaPorId(@PathVariable Integer id){
+
+        return ResponseEntity.ok(service.buscarCategoria(id));
     }
     
 }
