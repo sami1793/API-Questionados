@@ -16,4 +16,12 @@ public class PreguntaService {
     public List<Pregunta> traerPreguntas(){
         return repo.findAll();
     }
+
+    public Pregunta buscarPregunta(Integer id) {
+        Optional<Pregunta> resultado = repo.findById(id);
+        if(resultado.isPresent()){
+            return resultado.get();
+        }
+        else return null;
+    }
 }
