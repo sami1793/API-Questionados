@@ -2,6 +2,8 @@ package ar.com.ada.api.questionados.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="respuesta")
 public class Respuesta {
@@ -17,6 +19,7 @@ public class Respuesta {
     private boolean esCorrecta;
 
     @ManyToOne
+    @JsonIgnore//sino me impreme las preguntas y se anida porque preg tiene opciones
     @JoinColumn(name="pregunta_id",referencedColumnName = "pregunta_id")
     private Pregunta pregunta;
 

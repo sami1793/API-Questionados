@@ -24,7 +24,7 @@ public class Pregunta {
     private String enunciado;
 
     @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)//Pregunta pregunta en clase Respuesta
-    @JsonIgnore//ver si usarlo para no anidar todo
+    //@JsonIgnore//si lo pongo no me salen las opciones
     private List<Respuesta> opciones = new ArrayList<>();
 
 
