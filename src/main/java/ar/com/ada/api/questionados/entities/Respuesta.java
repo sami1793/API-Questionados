@@ -19,7 +19,7 @@ public class Respuesta {
     private boolean esCorrecta;
 
     @ManyToOne
-    @JsonIgnore//sino me impreme las preguntas y se anida porque preg tiene opciones
+    @JsonIgnore//sino me imprime las preguntas y se anida porque preg tiene opciones
     @JoinColumn(name="pregunta_id",referencedColumnName = "pregunta_id")
     private Pregunta pregunta;
 
