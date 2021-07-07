@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import ar.com.ada.api.questionados.entities.Pregunta;
+import ar.com.ada.api.questionados.entities.Respuesta;
 
 @Service
 public class QuestionadosService {
@@ -34,5 +35,16 @@ public class QuestionadosService {
         
         return todasLasPreguntas.get(random - 1);
 
+    }
+
+    public boolean esRespuestaCorrecta(Integer preguntaId, Integer respuestaId) {
+        
+        Pregunta pregunta = preguntaService.buscarPregunta(preguntaId);
+
+        for(Respuesta respuesta : pregunta.getOpciones()){
+            if(respuesta.getRespuestaId().equals(respuestaId))
+                return respuesta.isEsCorrecta();
+        }
+        return false;
     }
 }
