@@ -8,7 +8,7 @@ import ar.com.ada.api.questionados.entities.Respuesta;
 
 public class PreguntaAResolver {
 
-    public Integer pregunta_id;
+    public Integer preguntaId;
 
     public Categoria categoria;
 
@@ -21,13 +21,14 @@ public class PreguntaAResolver {
         
         PreguntaAResolver preguntaAResolver= new PreguntaAResolver();
         
-        preguntaAResolver.pregunta_id= pregunta.getPreguntaId();
+        preguntaAResolver.preguntaId= pregunta.getPreguntaId();
         preguntaAResolver.categoria=pregunta.getCategoria();
         preguntaAResolver.enunciado=pregunta.getEnunciado();
 
-        OpcionPregunta opcionPregunta = new OpcionPregunta();
+        
 
         for (Respuesta respuesta : pregunta.getOpciones()) {
+            OpcionPregunta opcionPregunta = new OpcionPregunta();//si lo ponia afuera me ponia las misma pregunta 3  veces
             opcionPregunta.respuestaId=respuesta.getRespuestaId();
             opcionPregunta.texto=respuesta.getTexto();
             
