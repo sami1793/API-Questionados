@@ -2,9 +2,9 @@ body {
     overflow:hidden;
     height:100vh;
     width:100vw;
-    background: #ffe4e1;
-    --c1: #768eeb;
-    --c2: rgb(127, 176, 185);
+    background: #FFED67;
+    --c1: #FF3A90;
+    --c2: #FF3A90;
     background-image: -webkit-linear-gradient(top, var(--c1), var(--c2));
     background-image: -moz-linear-gradient(top, var(--c1), var(--c2));
     background-image: -o-linear-gradient(top, var(--c1), var(--c2));
@@ -27,5 +27,12 @@ body {
     transform: translate(0, 0);
   }
 }
+
+.btn-secondary {
+  color: #eeff55;
+  background-color: #FF3A90;
+  border-color: #9b9b9b
+}
+
 
   
