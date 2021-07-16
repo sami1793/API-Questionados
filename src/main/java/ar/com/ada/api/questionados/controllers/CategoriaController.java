@@ -55,5 +55,24 @@ public class CategoriaController {
         }
         
     } 
+    @DeleteMapping("/categorias/{id}")//elimina una categoria por id
+    public ResponseEntity<GenericResponse> eliminarCategoria(@PathVariable Integer id){
+
+        GenericResponse respuesta = new GenericResponse();
+
+        if(service.existeCategoriaId(id)){
+            service.eliminarCategoria(id);
+
+            respuesta.isOk=true;
+            respuesta.message="Categoría eliminada correctamente";
+
+            return ResponseEntity.ok(respuesta);
+        }
+        else {
+            respuesta.isOk=false;
+            respuesta.message="No existe una categoria con este Id";
+            return ResponseEntity.badRequest().body(respuesta);
+        }
+    }
     
 }

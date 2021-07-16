@@ -38,5 +38,10 @@ public class CategoriaService {
         }
         else return null;    
     }
+
+    public void eliminarCategoria(Integer id){
+        Categoria categoria= buscarCategoria(id);
+        repo.delete(categoria);
+    }
     
 }
