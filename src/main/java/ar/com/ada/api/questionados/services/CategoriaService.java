@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.questionados.entities.Categoria;
+import ar.com.ada.api.questionados.models.request.CategoriaModificada;
 import ar.com.ada.api.questionados.repos.CategoriaRepository;
 
 @Service
@@ -42,6 +43,15 @@ public class CategoriaService {
     public void eliminarCategoria(Integer id){
         Categoria categoria= buscarCategoria(id);
         repo.delete(categoria);
+    }
+
+    public void modificarCategoria(Integer id, CategoriaModificada categoriaModificada){
+        Categoria categoria = buscarCategoria(id);
+
+        categoria.setNombre(categoriaModificada.nombre);
+        categoria.setDescripcion(categoriaModificada.descripcion);
+
+        repo.save(categoria);
     }
     
 }

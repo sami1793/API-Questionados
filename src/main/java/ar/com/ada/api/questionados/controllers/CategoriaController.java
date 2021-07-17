@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.questionados.entities.Categoria;
+import ar.com.ada.api.questionados.models.request.CategoriaModificada;
 import ar.com.ada.api.questionados.models.response.GenericResponse;
 import ar.com.ada.api.questionados.services.CategoriaService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,6 +67,25 @@ public class CategoriaController {
             respuesta.isOk=true;
             respuesta.message="Categoría eliminada correctamente";
 
+            return ResponseEntity.ok(respuesta);
+        }
+        else {
+            respuesta.isOk=false;
+            respuesta.message="No existe una categoria con este Id";
+            return ResponseEntity.badRequest().body(respuesta);
+        }
+    }
+
+    @PutMapping("/categorias/{id}")//modifica una categoria
+    public ResponseEntity<GenericResponse> modificarCategoria(@PathVariable Integer id, @RequestBody CategoriaModificada categoriaModificada){
+
+        GenericResponse respuesta= new GenericResponse();
+
+        if(service.existeCategoriaId(id)){
+            service.modificarCategoria(id, categoriaModificada);
+
+            respuesta.isOk=true;
+            respuesta.message="Categoria modificada con éxito";
             return ResponseEntity.ok(respuesta);
         }
         else {
