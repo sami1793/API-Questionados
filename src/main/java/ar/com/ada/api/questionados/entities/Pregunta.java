@@ -23,8 +23,8 @@ public class Pregunta {
 
     private String enunciado;
 
-    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)//Pregunta pregunta en clase Respuesta
-    //@JsonIgnore//si lo pongo no me salen las opciones
+    //CON EAGER ME REPITE LAS PREGUNTAS EN  preguntas por categoria, CON ObtenerPreguntasPorCategoriaV2 si sirve EAGER
+    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)//Pregunta pregunta en clase Respuesta
     private List<Respuesta> opciones = new ArrayList<>();
 
 

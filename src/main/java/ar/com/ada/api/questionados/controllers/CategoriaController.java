@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.questionados.entities.Categoria;
+import ar.com.ada.api.questionados.entities.Pregunta;
 import ar.com.ada.api.questionados.models.request.CategoriaModificada;
 import ar.com.ada.api.questionados.models.response.GenericResponse;
 import ar.com.ada.api.questionados.services.CategoriaService;
@@ -94,5 +95,16 @@ public class CategoriaController {
             return ResponseEntity.badRequest().body(respuesta);
         }
     }
+
+    //GET /categorias/{id}/preguntas -> todas las preguntas de una categoria especifica
+    //esta funcionando mal y me trae 3 veces la misma pregunta
+    @GetMapping("/categorias/{id}/preguntas")
+    public ResponseEntity <List<Pregunta>> obtenerPreguntasPorCategoria(@PathVariable Integer id){
+        //if(service.existeCategoriaId(id)){
+           return ResponseEntity.ok(service.obtenerPreguntasPorCategoriaV2(id));
+        //}
+        //else return null;
+    }
+
     
 }

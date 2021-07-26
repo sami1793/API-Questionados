@@ -59,6 +59,7 @@ public class Categoria {
     //Relacion bidireccional con Pregunta
     public void agregarPregunta(Pregunta pregunta){
         this.preguntas.add(pregunta);
+        //pregunta.setCategoria(this);
     }
 
     
